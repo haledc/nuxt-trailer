@@ -21,20 +21,24 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#027be3' },
 
   /*
   ** Global CSS
   */
   css: [
-    'element-ui/lib/theme-chalk/index.css'
+    'element-ui/lib/theme-chalk/index.css',
+    'video.js/dist/video-js.css',
+    '@/assets/styles/index.styl'
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/element-ui'
+    '@/plugins/element-ui',
+    '@/plugins/axios',
+    { src: '~plugins/nuxt-video-player-plugin.js', ssr: false }
   ],
 
   /*
