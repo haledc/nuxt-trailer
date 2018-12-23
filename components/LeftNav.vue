@@ -1,14 +1,54 @@
 <template>
-  <div class="header-nav">
-    header nav
+  <div class="left-nav">
+    <el-menu
+      :default-active="activeIndex"
+      class="el-menu-vertical-demo"
+      :collapse="isCollapse"
+      active-text-color="027be3"
+    >
+      <el-menu-item
+        v-for="(year,index) in years"
+        :key="index"
+        :index="index+''"
+        @click="goYear(year)"
+      >
+        <i class="el-icon-date"></i>
+        <span slot="title">{{year}}年上映</span>
+      </el-menu-item>
+    </el-menu>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'LeftNav',
+  props: {
+    isCollapse: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {
+      activeIndex: '10',
+      years: ['2018', '2019', '2020']
+    }
+  },
+  methods: {
+    goYear(year) {
+      this.$router.push(`/${year}`)
+    }
+  }
+}
 </script>
 
 <style scoped lang="stylus">
-  .header-nav
-    color red
+  .left-nav
+    .el-menu
+      border-right 1px solid #fff
+      min-height calc(100% - 60) px
+
+    .el-menu-vertical-demo:not(.el-menu--collapse)
+      width 180px
+
 </style>
