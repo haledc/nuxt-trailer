@@ -8,33 +8,35 @@
         <LeftNav :isCollapse="isCollapse"/>
       </el-aside>
       <el-main>
-        <MovieList :movieList="movieList"/>
+        <transition name="slide" mode="out-in">
+          <nuxt :key="key"/>
+        </transition>
       </el-main>
     </el-container>
   </el-container>
 </template>
 
 <script>
-import { normalizeMovies } from '../../utils'
-import HeaderNav from '../../components/HeaderNav'
-import LeftNav from '../../components/LeftNav'
-import MovieList from '../../components/MovieList'
+
+import HeaderNav from '../components/HeaderNav'
+import LeftNav from '../components/LeftNav'
 
 export default {
-  async asyncData({ $axios }) {
-    const { data } = await $axios.get('http://127.0.0.1:3000/api/movie/list', {})
-    return { movieList: normalizeMovies(data.data) }
-
-  },
+  name: 'Index',
+  loading: true,
   data() {
     return {
       isCollapse: true
     }
   },
+  computed: {
+    key() {
+      return this.$route.path
+    }
+  },
   components: {
     HeaderNav,
-    LeftNav,
-    MovieList
+    LeftNav
   }
 }
 </script>
@@ -58,4 +60,15 @@ export default {
 
   .el-main
     left 200px
+
+  .slide-enter-active, .slide-leave-active
+    transition all .5s
+
+  .slide-enter
+    opacity 0
+    transform translateX(-100%)
+
+  .slide-leave-to
+    opacity 0
+    transform translateX(100%)
 </style>

@@ -35,7 +35,6 @@
       :center="true"
     >
       <div
-        ref="player"
         :playsinline="playsinline"
         v-video-player:VueVideoPlayer="playerOptions"
       >
@@ -48,22 +47,23 @@
 import { normalizeMovies } from '../../utils'
 
 export default {
-  name: 'List',
+  name: 'Type',
   async asyncData({ $axios, params }) {
-    console.log('params', params)
-    const { data } = await $axios.get('http://127.0.0.1:3000/api/movie/list', {
-      type: params.type
+    const { type } = params
+    let category
+    let year
+    if (type.startsWith('2')) {
+      year = type
+    } else {
+      category = type
+    }
+    const data = await $axios.$get('http://127.0.0.1:9097/api/movie/list', {
+      params: {
+        type: category === '全部' ? '' : category,
+        year: year
+      }
     })
     return { movieList: normalizeMovies(data.data) }
-  },
-  props: {
-    movieList: {
-      type: Array,
-      required: true
-    }
-  },
-  mounted() {
-    console.log('this is current player instance object', this.VueVideoPlayer)
   },
   data() {
     return {
@@ -80,7 +80,7 @@ export default {
   },
   methods: {
     goDetail(id) {
-      console.log(id)
+      this.$router.push(`/detail/${id}`)
     },
     handleClose() {
       this.playerOptions.sources[0].src = ''
@@ -120,16 +120,16 @@ export default {
             margin 10px 0
 
           .text
-            height 150px
+            height 143px
             overflow hidden
             text-overflow ellipsis
 
           .actions
             .update-time
-              color #21BA45
+              color #21ba45
 
             .rate
-              color #E91E63
+              color #e91e63
 
             .detail
               font-size 16px
