@@ -26,7 +26,7 @@ router.get('/list', async ctx => {
   }
 })
 
-router.get('/:id', async ctx => {
+router.get('/detail', async ctx => {
   try {
     const id = ctx.query.id
     const movie = await Movie.findOne({
