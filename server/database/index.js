@@ -15,7 +15,7 @@ mongoose.connect(DB_URL, { useNewUrlParser: true })
 const initAdmin = async () => {
   try {
     let user = await User.findOne({
-      username: 'visitor'
+      email: 'test@test.com'
     })
     if (!user) {
       const visitor = new User({
