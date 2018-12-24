@@ -45,7 +45,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          this.$axios.$post('http://127.0.0.1:9097/api/admin/login', this.loginForm)
+          this.$axios.$post('/api/admin/login', this.loginForm)
             .then(data => {
               if (data.success === true) {
                 this.$message({

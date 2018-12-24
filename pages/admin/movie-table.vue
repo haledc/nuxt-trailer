@@ -163,7 +163,7 @@ export default {
     }
   },
   beforeCreate() {
-    this.$axios.get('http://127.0.0.1:9097/api/admin/movie/list')
+    this.$axios.get('/api/admin/movie/list')
       .then(res => {
         if (res.data.success) {
           this.adminMovieList = normalizeAdminMovies(res.data.data)
@@ -176,7 +176,7 @@ export default {
       this.$router.push(`/detail/${id}`)
     },
     logout() {
-      this.$axios.post('http://127.0.0.1:9097/api/admin/logout')
+      this.$axios.post('/api/admin/logout')
         .then(res => {
           if (res.data.success) {
             this.$router.push('/')
@@ -194,7 +194,7 @@ export default {
         cancelButtonText: '取消'
       })
         .then(() => {
-          this.$axios.delete('http://127.0.0.1:9097/api/admin/movies', {
+          this.$axios.delete('/api/admin/movies', {
             params: {
               id
             }

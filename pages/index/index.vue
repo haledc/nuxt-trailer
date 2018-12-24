@@ -49,7 +49,7 @@ import { normalizeMovies } from '../../utils'
 export default {
   name: 'Index',
   async asyncData({ $axios }) {
-    const data = await $axios.$get('http://127.0.0.1:9097/api/movie/list')
+    const data = await $axios.$get('/api/movie/list')
     return { movieList: normalizeMovies(data.data) }
   },
   data() {

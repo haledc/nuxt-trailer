@@ -53,7 +53,7 @@ export default {
   name: 'Id',
   async asyncData({ $axios, params }) {
     const { id } = params
-    const { data } = await $axios.get('http://127.0.0.1:9097/api/movie/detail', {
+    const { data } = await $axios.get('/api/movie/detail', {
       params: {
         id
       }
