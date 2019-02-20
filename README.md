@@ -8,9 +8,9 @@
 
 ## 说明
 
-- 这是一个具有服务端渲染功能的电影预告片网站，使用了 vue 的服务端框架 **nuxt** 来重新构建[原代码](https://github.com/haledc/vue-trailer)。
+- 这是一个具有服务端渲染功能的电影预告片网站，使用了 vue 的服务端框架 **nuxt** 来重新构建[原项目](https://github.com/haledc/vue-trailer)。
 
-- [演示地址](http://nuxt-trailer.haledeng.com)， [原代码演示地址](http://trailer.haledeng.com)。
+- [演示地址](http://nuxt-trailer.haledeng.com)， [原项目演示地址](http://trailer.haledeng.com)。
 
 ## 安装和启动
 
