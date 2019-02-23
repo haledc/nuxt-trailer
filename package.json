@@ -25,6 +25,7 @@
     "mongoose": "^5.4.0",
     "nuxt": "^2.0.0",
     "utility": "^1.15.0",
+    "vue-lazyload": "^1.2.6",
     "vue-video-player": "^5.0.2"
   },
   "devDependencies": {
