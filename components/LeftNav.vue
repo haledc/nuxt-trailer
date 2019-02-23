@@ -7,9 +7,9 @@
       active-text-color="027be3"
     >
       <el-menu-item
-        v-for="(year,index) in years"
-        :key="index"
-        :index="index+''"
+        v-for="year in years"
+        :key="year"
+        :index="year"
         @click="goYear(year)"
       >
         <i class="el-icon-date"></i>
@@ -30,8 +30,12 @@ export default {
   },
   data() {
     return {
-      activeIndex: '10',
       years: ['2018', '2019', '2020']
+    }
+  },
+  computed: {
+    activeIndex() {
+      return this.$route.params.type
     }
   },
   methods: {
@@ -43,12 +47,11 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-  .left-nav
-    .el-menu
-      border-right 1px solid #fff
-      min-height calc(100% - 60) px
+.left-nav
+  .el-menu
+    border-right: 1px solid #fff
+    min-height: calc(100% - 60) px
 
-    .el-menu-vertical-demo:not(.el-menu--collapse)
-      width 180px
-
+  .el-menu-vertical-demo:not(.el-menu--collapse)
+    width: 180px
 </style>
