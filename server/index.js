@@ -33,14 +33,12 @@ async function start() {
     await builder.build()
   }
 
-
   app.use(bodyParser())
   app.keys = ['vue koa trailer']
   app.use(session(CONFIG, app))
   app.use(routers.routes()).use(routers.allowedMethods())
 
   app.use(ctx => {
-
     ctx.status = 200 // koa defaults to 404 when it sees that status is unset
     return new Promise((resolve, reject) => {
       ctx.res.on('close', resolve)
@@ -50,7 +48,6 @@ async function start() {
         promise.then(resolve).catch(reject)
       })
     })
-
   })
 
   app.listen(port, host)
