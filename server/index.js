@@ -4,6 +4,7 @@ const bodyParser = require('koa-bodyparser')
 const routers = require('./routes')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
+const { failureResponse } = require('./utils')
 require('./database')
 
 const app = new Koa()
@@ -35,6 +36,22 @@ async function start() {
 
   app.use(bodyParser())
   app.keys = ['vue koa trailer']
+
+  app.use(async (ctx, next) => {
+    try {
+      await next()
+    } catch (err) {
+      console.log('error:', err.message)
+      if (err.message === '401') {
+        failureResponse(ctx, 401, '没有权限，请重新登录')
+      } else {
+        config.dev
+          ? failureResponse(ctx, 500, err.message)
+          : failureResponse(ctx, 500, '服务器内部错误')
+      }
+    }
+  })
+
   app.use(session(CONFIG, app))
   app.use(routers.routes()).use(routers.allowedMethods())
 
