@@ -9,7 +9,7 @@ const router = new Router({
 
 router.get('/list', async ctx => {
   const { type, year } = ctx.query
-  let query = {}
+  const query = {}
   if (type) {
     // { movieTypes: $in: [type] }
     query.movieTypes = { $in: [type] }

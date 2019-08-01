@@ -45,7 +45,7 @@ const movieSchema = new Schema({
   }
 })
 
-movieSchema.pre('save', function (next) {
+movieSchema.pre('save', function(next) {
   if (this.isNew) {
     this.meta.createdAt = this.meta.updateAt = Date.now()
   } else {

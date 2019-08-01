@@ -11,7 +11,7 @@ router.get('/movie/list', async ctx => {
   const { user } = ctx.session
   if (user) {
     const { type, year } = ctx.query
-    let query = {}
+    const query = {}
     if (type) {
       query.movieTypes = { $in: [type] }
     }
@@ -69,7 +69,7 @@ router.post('/login', async ctx => {
 })
 
 router.post('/logout', async ctx => {
-  delete ctx.session.user
+  await delete ctx.session.user
   successResponse(ctx, '注销成功')
 })
 

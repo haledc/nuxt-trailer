@@ -28,7 +28,7 @@ const categorySchema = new Schema({
   }
 })
 
-categorySchema.pre('save', function (next) {
+categorySchema.pre('save', function(next) {
   if (this.isNew) {
     this.meta.createdAt = this.meta.updateAt = Date.now()
   } else {

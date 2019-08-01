@@ -1,20 +1,21 @@
 const mongoose = require('mongoose')
-const User = require('./models/user')
 const { md5Pwd } = require('../utils')
+const User = require('./models/user')
 
 const DB_URL = 'mongodb://127.0.0.1:27017/trailer'
 
-mongoose.connect(DB_URL, { useNewUrlParser: true })
+mongoose
+  .connect(DB_URL, { useNewUrlParser: true })
   .then(() => {
     console.log('MongoDb server connected successfully!')
   })
-  .catch(err => {
-    console.log(err)
+  .catch(error => {
+    console.log(error)
   })
 
 const initAdmin = async () => {
   try {
-    let user = await User.findOne({
+    const user = await User.findOne({
       email: 'test@test.com'
     })
     if (!user) {
@@ -27,9 +28,8 @@ const initAdmin = async () => {
       await visitor.save()
       console.log('初始化用户成功！')
     }
-
-  } catch (err) {
-    console.log(err.message)
+  } catch (error) {
+    console.log(error.message)
   }
 }
 
