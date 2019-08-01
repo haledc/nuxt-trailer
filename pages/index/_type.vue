@@ -1,30 +1,13 @@
 <template>
   <div class="movie-list">
     <el-row>
-      <el-col
-        :span="6"
-        v-for="movie in movieList"
-        :key="movie._id"
-      >
+      <el-col v-for="movie in movieList" :key="movie._id" :span="6">
         <div class="card-container">
-          <el-card
-            shadow="hover"
-            class="card"
-          >
-            <div
-              class="poster"
-              @click="playVideo(movie.url)"
-            >
-              <img
-                v-lazy="movie.poster"
-                width="390"
-                height="560"
-              >
+          <el-card shadow="hover" class="card">
+            <div class="poster" @click="playVideo(movie.url)">
+              <img v-lazy="movie.poster" width="390" height="560" />
             </div>
-            <div
-              style=""
-              class="content"
-            >
+            <div style="" class="content">
               <div class="title">{{ movie.title }}</div>
               <div class="sub-title">{{ movie.subtitle }}</div>
               <div class="text">
@@ -50,42 +33,24 @@
     <el-dialog
       :visible.sync="dialogVisible"
       :modal="false"
-      @close="handleClose"
       style="padding: 35px"
       :show-close="false"
       :center="true"
+      @close="handleClose"
     >
       <div
-        :playsinline="playsinline"
         v-video-player:VueVideoPlayer="playerOptions"
-      >
-      </div>
+        :playsinline="playsinline"
+      ></div>
     </el-dialog>
   </div>
 </template>
 
 <script>
-import { normalizeMovies } from '../../utils'
+import { normalizeMovies } from '../../assets/helper'
 
 export default {
   name: 'Type',
-  async asyncData({ $axios, params }) {
-    const { type } = params
-    let category
-    let year
-    if (type.startsWith('2')) {
-      year = type
-    } else {
-      category = type
-    }
-    const data = await $axios.$get('/api/movie/list', {
-      params: {
-        type: category === '全部' ? '' : category,
-        year: year
-      }
-    })
-    return { movieList: normalizeMovies(data.data) }
-  },
   data() {
     return {
       dialogVisible: false,
@@ -100,6 +65,23 @@ export default {
         ]
       }
     }
+  },
+  async asyncData({ $axios, params }) {
+    const { type } = params
+    let category
+    let year
+    if (type.startsWith('2')) {
+      year = type
+    } else {
+      category = type
+    }
+    const data = await $axios.$get('/api/movie/list', {
+      params: {
+        type: category === '全部' ? '' : category,
+        year
+      }
+    })
+    return { movieList: normalizeMovies(data.data) }
   },
   methods: {
     goDetail(id) {
@@ -146,6 +128,7 @@ export default {
           height: 143px
           overflow: hidden
           text-overflow: ellipsis
+          line-height: 24px
 
         .actions
           .update-time

@@ -1,15 +1,15 @@
 <template>
   <el-container>
     <el-header>
-      <HeaderNav @toggleCollapse="isCollapse=!isCollapse"/>
+      <HeaderNav @toggleCollapse="isCollapse = !isCollapse" />
     </el-header>
     <el-container class="right">
       <el-aside style="width: auto">
-        <LeftNav :isCollapse="isCollapse"/>
+        <LeftNav :is-collapse="isCollapse" />
       </el-aside>
       <el-main>
         <transition name="slide" mode="out-in">
-          <nuxt :key="key"/>
+          <nuxt :key="key" />
         </transition>
       </el-main>
     </el-container>
@@ -17,13 +17,16 @@
 </template>
 
 <script>
-
 import HeaderNav from '../components/HeaderNav'
 import LeftNav from '../components/LeftNav'
 
 export default {
   name: 'Index',
   loading: true,
+  components: {
+    HeaderNav,
+    LeftNav
+  },
   data() {
     return {
       isCollapse: true
@@ -33,42 +36,38 @@ export default {
     key() {
       return this.$route.path
     }
-  },
-  components: {
-    HeaderNav,
-    LeftNav
   }
 }
 </script>
 
 <style scoped lang="stylus">
-  .el-header
-    width 100%
-    padding 0
-    position fixed
-    right 0
-    top 0
-    height 60px
-    z-index 100
+.el-header
+  width: 100%
+  padding: 0
+  position: fixed
+  right: 0
+  top: 0
+  height: 60px
+  z-index: 100
 
-  .el-aside
-    height 100%
-    position fixed
-    left 0
-    top 60px
-    z-index 100
+.el-aside
+  height: 100%
+  position: fixed
+  left: 0
+  top: 60px
+  z-index: 100
 
-  .el-main
-    left 200px
+.el-main
+  left: 200px
 
-  .slide-enter-active, .slide-leave-active
-    transition all .5s
+.slide-enter-active, .slide-leave-active
+  transition: all 0.5s
 
-  .slide-enter
-    opacity 0
-    transform translateX(-100%)
+.slide-enter
+  opacity: 0
+  transform: translateX(-100%)
 
-  .slide-leave-to
-    opacity 0
-    transform translateX(100%)
+.slide-leave-to
+  opacity: 0
+  transform: translateX(100%)
 </style>

@@ -1,6 +1,5 @@
 import { format, differenceInDays } from 'date-fns'
 
-
 const SITE = 'http://qiniu.haledeng.com/'
 
 export const dateDiff = time => {
@@ -15,7 +14,7 @@ export const dateDiff = time => {
 }
 
 export const normalizeMovies = data => {
-  let movies = []
+  const movies = []
 
   data.forEach(item => {
     const movie = {
@@ -46,7 +45,7 @@ export const normalizeMovieDetail = data => {
 }
 
 export const normalizeRelativeMovies = data => {
-  let movies = []
+  const movies = []
   data.forEach(item => {
     const movie = {
       _id: item._id,
@@ -57,12 +56,12 @@ export const normalizeRelativeMovies = data => {
     }
     movies.push(movie)
   })
-  // 只要前5部电影
+  // 只要前 5 部电影
   return movies.slice(0, 5)
 }
 
 export const normalizeAdminMovies = data => {
-  let movies = []
+  const movies = []
   data.forEach(item => {
     const movie = {
       poster: SITE + item.posterKey,

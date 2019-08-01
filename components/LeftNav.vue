@@ -13,7 +13,7 @@
         @click="goYear(year)"
       >
         <i class="el-icon-date"></i>
-        <span slot="title">{{year}}年上映</span>
+        <span slot="title">{{ year }}年上映</span>
       </el-menu-item>
     </el-menu>
   </div>

@@ -16,17 +16,14 @@
         <div class="text">电影预告片网站</div>
       </div>
       <el-menu-item index="100">
-        <el-button
-          type="info"
-          size="small"
-          round
-          @click="goLogin"
-        >登录</el-button>
+        <el-button type="info" size="small" @click="goLogin">
+          登录
+        </el-button>
       </el-menu-item>
       <el-menu-item
-        :index="category"
         v-for="category in showCategories"
         :key="category"
+        :index="category"
         @click="goCategory(category)"
       >
         {{ category }}

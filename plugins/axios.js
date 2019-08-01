@@ -1,8 +1,8 @@
 import { Message } from 'element-ui'
 
-export default function ({ $axios, redirect }) {
-  $axios.onError(err => {
-    const code = parseInt(err.response && err.response.status)
+export default function({ $axios, redirect }) {
+  $axios.onError(error => {
+    const code = parseInt(error.response && error.response.status)
     if (code === 400) {
       redirect('/400')
     } else if (code === 401) {
