@@ -8,15 +8,14 @@ module.exports = {
     parser: 'babel-eslint'
   },
   extends: [
-    'plugin:vue/essential'
+    '@nuxtjs',
+    'prettier',
+    'prettier/vue',
+    'plugin:prettier/recommended',
+    'plugin:nuxt/recommended'
   ],
-  // required to lint *.vue files
-  plugins: [
-    'vue'
-  ],
-  // add your custom rules here
+  plugins: ['prettier'],
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    'nuxt/no-cjs-in-config': 'off'
   }
 }

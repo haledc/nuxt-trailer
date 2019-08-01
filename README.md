@@ -4,7 +4,7 @@
 
 # 技术栈
 
-**vue + nuxt + ElementUI + koa + mongoose**
+**Vue + Nuxt + ElementUI + Koa2 + Mongoose**
 
 ## 说明
 
@@ -14,17 +14,14 @@
 
 ## 安装和启动
 
-``` bash
+```bash
 # install dependencies
-$ yarn install
+$ yarn
 
 # serve with hot reload at localhost:9097
-$ yarn run dev
+$ yarn dev
 
 # build for production and launch server
-$ yarn run build
+$ yarn build
 $ yarn start
-
-# generate static project
-$ yarn run generate
 ```
