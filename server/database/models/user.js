@@ -17,18 +17,10 @@ const userSchema = new Schema({
     type: String,
     unique: true
   },
-  // 登录尝试次数
-  loginAttempts: {
-    type: Number,
-    required: true,
-    default: 0
-  },
   role: {
     type: String,
     default: 'user'
   },
-  // 锁定用户
-  lockUntil: Number,
   meta: {
     createdAt: {
       type: Date,
@@ -39,6 +31,15 @@ const userSchema = new Schema({
       default: Date.now()
     }
   }
+})
+
+userSchema.pre('save', function(next) {
+  if (this.isNew) {
+    this.meta.createdAt = this.meta.updateAt = Date.now()
+  } else {
+    this.meta.updateAt = Date.now()
+  }
+  next()
 })
 
 module.exports = mongoose.model('user', userSchema)
