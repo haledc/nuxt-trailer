@@ -29,7 +29,7 @@ module.exports = {
   css: [
     'element-ui/lib/theme-chalk/index.css',
     'video.js/dist/video-js.css',
-    '@/assets/styles/index.styl'
+    '@/assets/styles/index.scss'
   ],
 
   /*
