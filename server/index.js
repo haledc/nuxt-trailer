@@ -4,7 +4,7 @@ const { Nuxt, Builder } = require('nuxt')
 const session = require('koa-session')
 const bodyParser = require('koa-bodyparser')
 const config = require('../nuxt.config.js')
-const { failureResponse } = require('./utils')
+const { dispatchResponse } = require('./utils')
 const routers = require('./routes')
 require('./database')
 
@@ -46,11 +46,23 @@ async function start() {
     } catch (error) {
       console.log('error:', error.message)
       if (error.message === '401') {
-        failureResponse(ctx, 401, '没有权限，请重新登录')
+        dispatchResponse(ctx, {
+          status: 401,
+          success: false,
+          msg: '没有权限，请重新登录'
+        })
       } else {
         config.dev
-          ? failureResponse(ctx, 500, error.message)
-          : failureResponse(ctx, 500, '服务器内部错误')
+          ? dispatchResponse(ctx, {
+              status: 500,
+              success: false,
+              msg: error.message
+            })
+          : dispatchResponse(ctx, {
+              status: 500,
+              success: false,
+              msg: '服务器内部错误'
+            })
       }
     }
   })

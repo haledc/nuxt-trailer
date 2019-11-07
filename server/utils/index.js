@@ -1,16 +1,13 @@
 const utility = require('utility')
 
-const successResponse = (ctx, data) => {
-  ctx.body = {
-    success: true,
-    data
-  }
-}
-
-const failureResponse = (ctx, status, msg) => {
+const dispatchResponse = (
+  ctx,
+  { status = 200, success = true, data = {}, msg = 'ok' }
+) => {
   ctx.status = status
   ctx.body = {
-    success: false,
+    success,
+    data,
     msg
   }
 }
@@ -21,7 +18,6 @@ const md5Pwd = pwd => {
 }
 
 module.exports = {
-  successResponse,
-  failureResponse,
+  dispatchResponse,
   md5Pwd
 }
