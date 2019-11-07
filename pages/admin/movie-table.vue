@@ -219,30 +219,36 @@ export default {
 }
 </script>
 
-<style scoped lang="stylus">
-.movie-table
-  .title-container
-    width: 100%
-    height: 60px
-    background: #027be3
-    color: #fff
+<style scoped lang="scss">
+.movie-table {
+  .title-container {
+    width: 100%;
+    height: 60px;
+    background: #027be3;
+    color: #fff;
 
-    .title
-      font-size: 20px
-      font-weight: bolder
-      float: left
-      margin-left: 20px
-      line-height: 60px
+    .title {
+      font-size: 20px;
+      font-weight: bolder;
+      float: left;
+      margin-left: 20px;
+      line-height: 60px;
+    }
 
-    .logout
-      font-size: 20px
-      float: right
-      margin-top: 12px
-      margin-right: 20px
+    .logout {
+      font-size: 20px;
+      float: right;
+      margin-top: 12px;
+      margin-right: 20px;
+    }
+  }
 
-  .table-container
-    padding: 10px
+  .table-container {
+    padding: 10px;
+  }
 
-  .pagination
-    float: right
+  .pagination {
+    float: right;
+  }
+}
 </style>

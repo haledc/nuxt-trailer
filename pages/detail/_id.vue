@@ -2,15 +2,7 @@
   <div class="movie-detail">
     <el-row>
       <el-col :span="18">
-        <div
-          v-video-player:VueVideoPlayer="{
-            playbackRates: [0.7, 1.0, 1.5, 2.0],
-            sources: [{ type: 'video/mp4', src: movieDetail.url }],
-            poster: movieDetail.pic,
-            height: '800',
-            width: '1400'
-          }"
-        ></div>
+        <Player :movie-detail="movieDetail" />
       </el-col>
       <el-col :span="6">
         <div class="detail-container">
@@ -59,6 +51,7 @@
 </template>
 
 <script>
+import Player from '../../components/Player'
 import {
   normalizeMovieDetail,
   normalizeRelativeMovies
@@ -66,6 +59,9 @@ import {
 
 export default {
   name: 'Id',
+  components: {
+    Player
+  },
   data() {
     return {
       playsinline: true,
@@ -92,52 +88,71 @@ export default {
 }
 </script>
 
-<style scoped lang="stylus">
-.movie-detail
-  .detail-container
-    .title
-      text-align: center
+<style scoped lang="scss">
+.movie-detail {
+  .detail-container {
+    .title {
+      text-align: center;
 
-      .text
-        display: inline-block
-        font-size: 24px
-        font-weight: bold
-        margin-bottom: 10px
+      .text {
+        display: inline-block;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+    }
 
-    .detail
-      .movie-title
-        font-size: 20px
-        font-weight: bold
-        margin-bottom: 10px
-        color: #7f828b
-        text-align: center
+    .detail {
+      .movie-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #7f828b;
+        text-align: center;
+      }
 
-      .rate, .tags, .update, .summary, .summary-text
-        font-size: 16px
-        margin-bottom: 10px
+      .rate,
+      .tags,
+      .update,
+      .summary,
+      .summary-text {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
 
-      .tags, .summary-text
-        line-height: 24px
+      .tags,
+      .summary-text {
+        line-height: 24px;
+      }
+    }
 
-    .relative-movies
-      .movie-item
-        display: flex
-        margin-bottom: 10px
-        cursor: pointer
+    .relative-movies {
+      .movie-item {
+        display: flex;
+        margin-bottom: 10px;
+        cursor: pointer;
 
-        .poster
-          padding: 0 10px
-          flex: 0
+        .poster {
+          padding: 0 10px;
+          flex: 0;
+        }
 
-        .content
-          margin-left: 10px
-          flex: 1
-          font-size: 20px
+        .content {
+          margin-left: 10px;
+          flex: 1;
+          font-size: 20px;
 
-          .content-title
-            margin-bottom: 40px
-            padding-top: 10px
+          .content-title {
+            margin-bottom: 40px;
+            padding-top: 10px;
+          }
 
-          .update
-            padding-bottom: 10px
+          .update {
+            padding-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+}
 </style>

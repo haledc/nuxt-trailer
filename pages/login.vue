@@ -91,39 +91,45 @@ export default {
 }
 </script>
 
-<style scoped lang="stylus">
-.login
-  position: fixed
-  width: 100%
-  height: 100%
-  background: url('../assets/images/bg.jpg') no-repeat center center
-  background-size: 100% 100%
+<style scoped lang="scss">
+.login {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: url('../assets/images/bg.jpg') no-repeat center center;
+  background-size: 100% 100%;
 
-  .form-container
-    width: 370px
-    height: 210px
-    position: absolute
-    top: 100px
-    left: 50%
-    padding: 25px
-    border-radius: 5px
-    text-align: center
-    transform: translateX(-50%)
+  .form-container {
+    width: 370px;
+    height: 210px;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    padding: 25px;
+    border-radius: 5px;
+    text-align: center;
+    transform: translateX(-50%);
 
-    .manage-tip
-      .title
-        font-family: 'Microsoft YaHei'
-        font-weight: bold
-        font-size: 26px
-        color: #fff
+    .manage-tip {
+      .title {
+        font-family: 'Microsoft YaHei';
+        font-weight: bold;
+        font-size: 26px;
+        color: #fff;
+      }
+    }
 
-    .login-form
-      margin: 20px auto 0
-      background-color: #fff
-      padding: 20px 40px 20px 20px
-      border-radius: 5px
-      box-shadow: 0 5px 10px #ccc
+    .login-form {
+      margin: 20px auto 0;
+      background-color: #fff;
+      padding: 20px 40px 20px 20px;
+      border-radius: 5px;
+      box-shadow: 0 5px 10px #ccc;
 
-      .submit-btn
-        width: 100%
+      .submit-btn {
+        width: 100%;
+      }
+    }
+  }
+}
 </style>

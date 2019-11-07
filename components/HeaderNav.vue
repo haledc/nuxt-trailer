@@ -16,7 +16,11 @@
         <div class="text">电影预告片网站</div>
       </div>
       <el-menu-item index="100">
-        <el-button type="info" size="small" @click="goLogin">
+        <el-button
+          type="info"
+          style="padding: 5px 10px; font-size: 18px"
+          @click="goLogin"
+        >
           登录
         </el-button>
       </el-menu-item>
@@ -76,29 +80,35 @@ export default {
 }
 </script>
 
-<style scoped lang="stylus">
-.header-nav
-  .el-menu
-    padding-right: 20px
-    border-bottom: 1px solid #fff
+<style scoped lang="scss">
+.header-nav {
+  .el-menu {
+    padding-right: 20px;
+    border-bottom: 1px solid #fff;
+  }
 
-  .header-title
-    position: absolute
-    left: 12px
-    top: 12px
+  .header-title {
+    position: absolute;
+    left: 12px;
+    top: 12px;
 
-    .icon
-      padding: 10px
-      vertical-align: middle
+    .icon {
+      padding: 10px;
+      vertical-align: middle;
+    }
 
-    .text
-      display: inline-block
-      font-weight: bolder
-      color: #027be3
-      font-size: 25px
-      vertical-align: middle
+    .text {
+      display: inline-block;
+      font-weight: bolder;
+      color: #027be3;
+      font-size: 25px;
+      vertical-align: middle;
+    }
+  }
 
-  .el-menu-item
-    font-size: 16px
-    float: right
+  .el-menu-item {
+    font-size: 16px;
+    float: right;
+  }
+}
 </style>

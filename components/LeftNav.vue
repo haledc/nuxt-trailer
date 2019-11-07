@@ -46,12 +46,15 @@ export default {
 }
 </script>
 
-<style scoped lang="stylus">
-.left-nav
-  .el-menu
-    border-right: 1px solid #fff
-    min-height: calc(100% - 60) px
+<style scoped lang="scss">
+.left-nav {
+  .el-menu {
+    border-right: 1px solid #fff;
+    min-height: calc(100% - 60) px;
+  }
 
-  .el-menu-vertical-demo:not(.el-menu--collapse)
-    width: 180px
+  .el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 180px;
+  }
+}
 </style>

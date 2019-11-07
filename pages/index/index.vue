@@ -85,45 +85,57 @@ export default {
 }
 </script>
 
-<style scoped lang="stylus">
-.movie-list
-  position: absolute
-  top: 61px
-  left: 65px
-  overflow: auto
+<style scoped lang="scss">
+.movie-list {
+  position: absolute;
+  top: 61px;
+  left: 65px;
+  overflow: auto;
 
-  .card-container
-    padding: 10px
+  .card-container {
+    padding: 10px;
 
-    .card
-      .poster
-        text-align: center
+    .card {
+      .poster {
+        text-align: center;
+      }
 
-      .content
-        padding: 10px 10px 0
+      .content {
+        padding: 10px 10px 0;
 
-        .title
-          font-size: 16px
-          font-weight: bold
+        .title {
+          font-size: 16px;
+          font-weight: bold;
+        }
 
-        .sub-title
-          font-size: 12px
-          color: #aaa
-          margin: 10px 0
+        .sub-title {
+          font-size: 12px;
+          color: #aaa;
+          margin: 10px 0;
+        }
 
-        .text
-          height: 143px
-          overflow: hidden
-          text-overflow: ellipsis
-          line-height: 24px
+        .text {
+          height: 143px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          line-height: 24px;
+        }
 
-        .actions
-          .update-time
-            color: #21ba45
+        .actions {
+          .update-time {
+            color: #21ba45;
+          }
 
-          .rate
-            color: #e91e63
+          .rate {
+            color: #e91e63;
+          }
 
-          .detail
-            font-size: 16px
+          .detail {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
 </style>
