@@ -1,4 +1,4 @@
-const Router = require('koa-router')
+const Router = require('@koa/router')
 const adminRouter = require('./admin')
 const movieRouter = require('./movie')
 

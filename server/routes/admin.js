@@ -1,7 +1,7 @@
-const Router = require('koa-router')
+const Router = require('@koa/router')
 const Movie = require('../database/models/movie')
 const User = require('../database/models/user')
-const { successResponse, failureResponse, md5Pwd } = require('../utils')
+const { dispatchResponse, md5Pwd } = require('../utils')
 
 const router = new Router({
   prefix: '/api/admin'
@@ -19,7 +19,7 @@ router.get('/movie/list', async ctx => {
       query.year = year
     }
     const movies = await Movie.find(query)
-    successResponse(ctx, movies)
+    dispatchResponse(ctx, { data: movies })
   } else {
     throw new Error('401')
   }
@@ -36,9 +36,9 @@ router.delete('/movies', async ctx => {
       await movie.remove()
     }
     const movies = await Movie.find()
-    successResponse(ctx, movies)
+    dispatchResponse(ctx, { data: movies })
   } else {
-    failureResponse(ctx, 200, '你没有权限删除')
+    dispatchResponse(ctx, { msg: '你没有权限删除' })
   }
 })
 
@@ -48,7 +48,7 @@ router.post('/login', async ctx => {
     email
   })
   if (!user) {
-    failureResponse(ctx, 200, '用户不存在')
+    dispatchResponse(ctx, { msg: '用户不存在' })
   } else {
     const match = await User.findOne({
       email,
@@ -61,16 +61,16 @@ router.post('/login', async ctx => {
         role: match.role,
         username: match.username
       }
-      successResponse(ctx, match)
+      dispatchResponse(ctx, { data: match })
     } else {
-      failureResponse(ctx, 200, '用户名或者密码不正确')
+      dispatchResponse(ctx, { msg: '用户名或者密码不正确' })
     }
   }
 })
 
 router.post('/logout', async ctx => {
   await delete ctx.session.user
-  successResponse(ctx, '注销成功')
+  dispatchResponse(ctx, { data: '注销成功' })
 })
 
 module.exports = router

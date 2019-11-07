@@ -1,7 +1,7 @@
-const Router = require('koa-router')
+const Router = require('@koa/router')
 const Movie = require('../database/models/movie')
 
-const { successResponse } = require('../utils')
+const { dispatchResponse } = require('../utils')
 
 const router = new Router({
   prefix: '/api/movie'
@@ -19,7 +19,7 @@ router.get('/list', async ctx => {
     query.year = year
   }
   const movies = await Movie.find(query)
-  successResponse(ctx, movies)
+  dispatchResponse(ctx, { data: movies })
 })
 
 router.get('/detail', async ctx => {
@@ -32,9 +32,11 @@ router.get('/detail', async ctx => {
       $in: movie.movieTypes
     }
   })
-  successResponse(ctx, {
-    movie,
-    relativeMovies
+  dispatchResponse(ctx, {
+    data: {
+      movie,
+      relativeMovies
+    }
   })
 })
 
