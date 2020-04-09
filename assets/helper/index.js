@@ -1,9 +1,9 @@
-import { format, differenceInDays } from 'date-fns'
+import { format, differenceInDays, parseISO } from 'date-fns'
 
 const SITE = 'http://qiniu.haledeng.com/'
 
 export const dateDiff = time => {
-  const num = differenceInDays(Date.now(), time)
+  const num = differenceInDays(Date.now(), parseISO(time))
   if (num <= 31) {
     return `${num}天`
   } else if (num < 365) {
@@ -51,7 +51,7 @@ export const normalizeRelativeMovies = data => {
       _id: item._id,
       poster: SITE + item.posterKey,
       title: item.title,
-      pubdate: format(item.pubdate[0].date, 'YYYY.MM'),
+      pubdate: format(parseISO(item.pubdate[0].date), 'yyyy.MM'),
       country: item.pubdate[0].country
     }
     movies.push(movie)
@@ -70,7 +70,7 @@ export const normalizeAdminMovies = data => {
       type: item.movieTypes,
       tags: item.tags,
       update: dateDiff(item.meta.createdAt),
-      pubdate: format(item.pubdate[0].date, 'YYYY.MM'),
+      pubdate: format(parseISO(item.pubdate[0].date), 'yyyy.MM'),
       _id: item._id,
       id: item.movieId,
       summary: item.summary,
