@@ -51,6 +51,10 @@ import { normalizeMovies } from '../../assets/helper'
 
 export default {
   name: 'Index',
+  async asyncData({ $axios }) {
+    const data = await $axios.$get('/api/movie/list')
+    return { movieList: normalizeMovies(data.data) }
+  },
   data() {
     return {
       dialogVisible: false,
@@ -65,10 +69,6 @@ export default {
         ]
       }
     }
-  },
-  async asyncData({ $axios }) {
-    const data = await $axios.$get('/api/movie/list')
-    return { movieList: normalizeMovies(data.data) }
   },
   methods: {
     goDetail(id) {

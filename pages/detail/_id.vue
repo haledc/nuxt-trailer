@@ -62,12 +62,6 @@ export default {
   components: {
     Player
   },
-  data() {
-    return {
-      playsinline: true,
-      activeTab: 'first'
-    }
-  },
   async asyncData({ $axios, params }) {
     const { id } = params
     const { data } = await $axios.get('/api/movie/detail', {
@@ -78,6 +72,12 @@ export default {
     return {
       movieDetail: normalizeMovieDetail(data.data.movie),
       relativeMovies: normalizeRelativeMovies(data.data.relativeMovies)
+    }
+  },
+  data() {
+    return {
+      playsinline: true,
+      activeTab: 'first'
     }
   },
   methods: {

@@ -30,9 +30,7 @@
           width="150"
           sortable
         >
-          <template slot-scope="scope">
-            {{ scope.row.rate }} 分
-          </template>
+          <template slot-scope="scope"> {{ scope.row.rate }} 分 </template>
         </el-table-column>
         <el-table-column
           prop="update"
@@ -41,9 +39,7 @@
           width="150"
           sortable
         >
-          <template slot-scope="scope">
-            {{ scope.row.update }}前更新
-          </template>
+          <template slot-scope="scope"> {{ scope.row.update }}前更新 </template>
         </el-table-column>
         <el-table-column prop="id" label="电影id" align="center" width="150">
         </el-table-column>

@@ -129,7 +129,7 @@ table {
 /* custom */
 a {
   color: #7e8c8d;
-  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   text-decoration: none;
 }
 

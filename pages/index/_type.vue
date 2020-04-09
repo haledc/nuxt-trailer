@@ -51,21 +51,6 @@ import { normalizeMovies } from '../../assets/helper'
 
 export default {
   name: 'Type',
-  data() {
-    return {
-      dialogVisible: false,
-      playsinline: true,
-      playerOptions: {
-        autoplay: true,
-        sources: [
-          {
-            type: 'video/mp4',
-            src: ''
-          }
-        ]
-      }
-    }
-  },
   async asyncData({ $axios, params }) {
     const { type } = params
     let category
@@ -83,6 +68,22 @@ export default {
     })
     return { movieList: normalizeMovies(data.data) }
   },
+  data() {
+    return {
+      dialogVisible: false,
+      playsinline: true,
+      playerOptions: {
+        autoplay: true,
+        sources: [
+          {
+            type: 'video/mp4',
+            src: ''
+          }
+        ]
+      }
+    }
+  },
+
   methods: {
     goDetail(id) {
       this.$router.push(`/detail/${id}`)
